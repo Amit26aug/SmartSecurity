@@ -25,7 +25,25 @@ public class SmartSecurityContract {
 	}
 	
 	public interface EmployeeEntry{
+		public static final String EMPLOYEE_TABLE_NAME= "employee";
+		public static final String COLUMN_EMPLOYEE_ID= "eid";
+		public static final String COLUMN_EMPLOYEE_NAME= "ename";
+		public static final String COLUMN_EMPLOYEE_DOB= "edob";
+		public static final String COLUMN_EMPLOYEE_GENDER= "egender";
+		public static final String COLUMN_EMPLOYEE_COR_ADDRESS= "ecoraddress";
+		public static final String COLUMN_EMPLOYEE_COR_STATE= "ecorstate";
+		public static final String COLUMN_EMPLOYEE_COR_CITY= "ecorcity";
+		public static final String COLUMN_EMPLOYEE_PER_ADDRESS= "eperaddress";
+		public static final String COLUMN_EMPLOYEE_PER_STATE= "eperstate";
+		public static final String COLUMN_EMPLOYEE_PER_CITY= "epercity";
+		public static final String COLUMN_EMPLOYEE_DEPARTMENT= "edepartment";
+		public static final String COLUMN_EMPLOYEE_QUALIFICATION= "equalification";
+		public static final String COLUMN_EMPLOYEE_DESIGNATION= "edesignation";
+		public static final String COLUMN_EMPLOYEE_MOBILE= "emobile";
+		public static final String COLUMN_EMPLOYEE_EMAIL= "eemail";
+		public static final String COLUMN_EMPLOYEE_PHOTOGRAPH= "ephotograph";
 		
+		public static final String EMPLOYEE_PICTURE_PATH= "E:\\Netbeans\\Eclipse\\SmartSecurity\\WebContent\\picture\\employee";
 	}
 	
 	public interface VisitorEntry{
