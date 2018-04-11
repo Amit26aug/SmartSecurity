@@ -15,8 +15,8 @@ public class DBHelper {
 	
 	private static final String DRIVER_PATH= "com.mysql.jdbc.Driver";
 	private static final String SERVER= "jdbc:mysql://localhost:3306/smartsecurity";
-	private static final String USER_ID= "amit.aug";
-	private static final String PASSWORD= "youKnowNothing";
+	private static final String USER_ID= "root";
+	private static final String PASSWORD= "123";
 	
 	public static Connection getConnection(){
 		try {

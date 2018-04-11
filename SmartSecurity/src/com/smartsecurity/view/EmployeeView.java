@@ -31,7 +31,11 @@ public class EmployeeView extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		
-		out.println("<html>"
+		out.println(
+				  "<script src='asset/jquery-3.2.1.min.js'></script>"
+				+ "<script src='asset/statecity.js'></script>"
+				+ "<html>"
+				+ "<body style='font-family: Arial'>"
 				+ "<form action='EmployeeSubmit' method='post' enctype='multipart/form-data'>"
 				+ "<table>"
 				+ "<caption><b><i>Employee Registration</i></b></caption>"
@@ -43,25 +47,25 @@ public class EmployeeView extends HttpServlet {
 				+ "<td><input type=date name=edob size=30></td></tr>"
 				
 				+ "<tr><td><b><i>Employee Gender:</i></b></td>"
-				+ "<td><input type=text name=egender size=30></td></tr>"
+				+ "<td><select name=egender><option>Male</option><option>Female</option><option>Other</option></select></td></tr>"
 				
-				+ "<tr><td><b><i>Employee Corresponding Address:</i></b></td>"
-				+ "<td><input type=text name=ecoraddress size=30></td></tr>"
+				+ "<tr><td><b><i>Employee Correspondance Address:</i></b></td>"
+				+ "<td><textarea name='ecoraddress' rows='3' cols='45'></textarea></td></tr>"
 				
-				+ "<tr><td><b><i>Employee Corresponding State:</i></b></td>"
-				+ "<td><input type=text name=ecorstate size=30></td></tr>"
+				+ "<tr><td><b><i>Employee Correspondance State:</i></b></td>"
+				+ "<td><select name=ecorstate id=state></select></td></tr>"
 				
-				+ "<tr><td><b><i>Employee Corresponding City:</i></b></td>"
-				+ "<td><input type=text name=ecorcity size=30></td></tr>"
+				+ "<tr><td><b><i>Employee Correspondance City:</i></b></td>"
+				+ "<td><select name=ecorcity id=city></select></td></tr>"
 				
 				+ "<tr><td><b><i>Employee Permanent Address:</i></b></td>"
-				+ "<td><input type=text name=eperaddress size=30></td></tr>"
+				+ "<td><textarea name='eperaddress' rows='3' cols='45'></textarea></td></tr>"
 				
 				+ "<tr><td><b><i>Employee Permanent State:</i></b></td>"
-				+ "<td><input type=text name=eperstate size=30></td></tr>"
+				+ "<td><select name=eperstate id=state2></select></td></tr>"
 				
 				+ "<tr><td><b><i>Employee Permanent City:</i></b></td>"
-				+ "<td><input type=text name=epercity size=30></td></tr>"
+				+ "<td><select name=epercity id=city2></select></td></tr>"
 				
 				+ "<tr><td><b><i>Employee Department:</i></b></td>"
 				+ "<td><input type=text name=edepartment size=30></td></tr>"
@@ -82,6 +86,7 @@ public class EmployeeView extends HttpServlet {
 				+ "<td><input type=file name=ephoto></td></tr>"
 				+ "</table><br>"
 				+ "<input type=submit>&nbsp;&nbsp;<input type=reset></br>"
+				+ "</body>"
 				+ "</form></html>");
 		
 		out.flush();

@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 
 import com.smartsecurity.contract.SmartSecurityContract.VisitorEntry;
 import com.smartsecurity.contract.SmartSecurityContract.StatesEntry;
+import com.smartsecurity.contract.SmartSecurityContract.VisitEntry;
 import com.smartsecurity.contract.SmartSecurityContract.CitiesEntry;
+import com.smartsecurity.contract.SmartSecurityContract.DepartmentEntry;
 import com.smartsecurity.model.Visitor;
 
-public class VisitorController implements VisitorEntry, StatesEntry, CitiesEntry {
+public class VisitorController implements VisitorEntry, StatesEntry, CitiesEntry, VisitEntry, DepartmentEntry {
 
 	public static boolean addNewVisitor(Visitor v){
 		try {
@@ -172,6 +174,40 @@ public class VisitorController implements VisitorEntry, StatesEntry, CitiesEntry
 			System.out.println("Exception in VisitorController.deleteVisitor(): "+ e);
 		}
 		return false;
+	}
+
+	public static ResultSet getVisitorsBetweenDates(String fdate, String tdate, String status, String search, String searchText) {
+		if(status.equals("0"))
+			status= "out";
+		else
+			status= "in";
+		
+		if(search.equals("0"))
+			searchText= "";
+		else if(search.equals("1"))
+			searchText= " AND A."+ COLUMN_VISITOR_NAME+ " LIKE '%"+ searchText+ "%'";
+		else if(search.equals("2"))
+			searchText= " AND B."+ COLUMN_VISIT_DEPARTMENT_ID+ " LIKE '%"+ searchText+ "%'";
+		
+		try {
+			Connection cn= DBHelper.getConnection();
+//			String deptQuery= "SELECT "+ COLUMN_DEP_NAME+ " FROM "+ DEP_TABLE_NAME+ " WHERE "+ COLUMN_DEP_ID
+//					+ "= B."+ COLUMN_VISIT_DEPARTMENT_ID;
+			String query= "SELECT A."+ COLUMN_VISITOR_ID+ ", A."+ COLUMN_VISITOR_NAME+ ", A."+ COLUMN_VISITOR_MOBILE
+					+ ", A."+ COLUMN_VISITOR_PICTURE+ ", B."+ COLUMN_VISIT_RFID+ ", B."+ COLUMN_VISIT_DEPARTMENT_ID+ ", "
+					+ "B."+ COLUMN_VISIT_PURPOSE+ ", B."+ COLUMN_VISIT_DATE+ ", B."+ COLUMN_VISIT_CHECK_IN
+					+ ", B."+ COLUMN_VISIT_CHECK_OUT+ " FROM "+ VISITOR_TABLE_NAME+" A, "+ VISIT_TABLE_NAME+ " B"
+					+ " WHERE (B."+ COLUMN_VISIT_DATE+ " BETWEEN '"+ fdate+ "' AND '"+ tdate+ "') AND "
+					+ "B."+ COLUMN_VISIT_STATUS+ "='"+ status+ "' AND A."+ COLUMN_VISITOR_ID
+					+ "= B."+ COLUMN_VISIT_VISITOR_ID+ searchText;
+			System.out.println(query);
+			
+			ResultSet rs= DBHelper.executeQuery(cn, query);
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Exception in VisitorController.getVisitorsBetweenDates(): "+ e);
+		}
+		return null;
 	}
 	
 }

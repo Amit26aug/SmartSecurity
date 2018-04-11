@@ -64,7 +64,32 @@ public class SmartSecurityContract {
 	}
 	
 	public interface VisitEntry{
-		
+		public static final String VISIT_TABLE_NAME= "visit";
+		public static final String COLUMN_VISIT_TRANSACTION_ID= "transactionid";
+		public static final String COLUMN_VISIT_VISITOR_ID= "vid";
+		public static final String COLUMN_VISIT_RFID= "vrfid";
+		public static final String COLUMN_VISIT_DEPARTMENT_ID= "vdepartmentid";
+		public static final String COLUMN_VISIT_PURPOSE= "vpurpose";
+		public static final String COLUMN_VISIT_DATE= "vdate";
+		public static final String COLUMN_VISIT_CHECK_IN= "vcheckin";
+		public static final String COLUMN_VISIT_CHECK_OUT= "vcheckout";
+		public static final String COLUMN_VISIT_STATUS= "vstatus";
+	}
+	
+	public interface AdminEntry{
+		public static final String ADMIN_TABLE_NAME= "admin";
+		public static final String COLUMN_ADMIN_ID= "adminid";
+		public static final String COLUMN_ADMIN_NAME= "adminname";
+		public static final String COLUMN_ADMIN_PICTURE= "adminpicture";
+		public static final String COLUMN_ADMIN_PASSWORD= "adminpassword";
+	}
+	
+	public interface ExitEntry{
+		public static final String EXIT_TABLE_NAME= "visitorexit";
+		public static final String COLUMN_EXIT_TRANSACTION_ID= "transactionid";
+		public static final String COLUMN_EXIT_RFID= "verfid";
+		public static final String COLUMN_EXIT_DATE= "vedate";
+		public static final String COLUMN_EXIT_TIME= "vetime";
 	}
 	
 }
