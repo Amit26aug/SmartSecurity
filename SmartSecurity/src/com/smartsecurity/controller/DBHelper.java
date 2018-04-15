@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.JSONObject;
 
@@ -17,6 +19,20 @@ public class DBHelper {
 	private static final String SERVER= "jdbc:mysql://localhost:3306/smartsecurity";
 	private static final String USER_ID= "root";
 	private static final String PASSWORD= "123";
+	
+	public static String getSQLFormatDate(){
+		Date date= new Date();
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		String sqlFormatDate= dateFormatter.format(date);
+		return sqlFormatDate;
+	}
+	
+	public static String getSQLFormatTime(){
+		Date date= new Date();
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
+		String sqlFormatTime= dateFormatter.format(date);
+		return sqlFormatTime;
+	}
 	
 	public static Connection getConnection(){
 		try {

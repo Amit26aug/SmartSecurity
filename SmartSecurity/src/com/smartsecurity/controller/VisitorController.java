@@ -209,5 +209,21 @@ public class VisitorController implements VisitorEntry, StatesEntry, CitiesEntry
 		}
 		return null;
 	}
+
+	public static String getVisitorIdByMobile(String mobile) {
+		try {
+			Connection cn= DBHelper.getConnection();
+			String query= "SELECT "+ COLUMN_VISITOR_ID+ " FROM "+ VISITOR_TABLE_NAME+ " WHERE "+ COLUMN_VISITOR_MOBILE
+					+ "='"+ (mobile)+ "'";
+			System.out.println(query);
+			
+			ResultSet rs= DBHelper.executeQuery(cn, query);
+			if(rs.next())
+				return rs.getString(1);
+		} catch (Exception e) {
+			System.out.println("Exception in getVisitorIdByMobile(): "+ e);
+		}
+		return null;
+	}
 	
 }

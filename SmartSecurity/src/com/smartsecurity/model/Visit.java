@@ -10,7 +10,14 @@ public class Visit {
 	private String visitCheckinTime;
 	private String visitCheckoutTime;
 	private String visitStatus;
+	private String visitHost;
 	
+	public String getVisitHost() {
+		return visitHost;
+	}
+	public void setVisitHost(String visitHost) {
+		this.visitHost = visitHost;
+	}
 	public String getVisitTransactionId() {
 		return visitTransactionId;
 	}

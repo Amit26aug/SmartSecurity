@@ -10,10 +10,10 @@ public class VisitController implements VisitEntry {
 	public static boolean AddNewRecord(Visit V) {
 		try {
 			Connection cn = DBHelper.getConnection();
-			String query = "insert into visit(vid,vrfid,vdepartmentid,vpurpose,vdate,vcheckin,vcheckout,vstatus) values('"
+			String query = "insert into visit(vid,vrfid,vdepartmentid,vpurpose,vdate,vcheckin,vcheckout,vstatus,vhost) values('"
 					+ V.getVisitVisitorId() + "','" + V.getVisitRFID() + "','" + V.getVisitDepartmentId() + "','"
 					+ V.getVisitPurpose() + "','" + V.getVisitDate() + "','" + V.getVisitCheckinTime() + "','"
-					+ V.getVisitCheckoutTime() + "','" + V.getVisitStatus() + "')";
+					+ V.getVisitCheckoutTime() + "','" + V.getVisitStatus() + "','"+ V.getVisitHost()+"')";
 			System.out.println(query);
 			boolean st = DBHelper.executeUpdate(cn, query);
 			return (st);
@@ -53,7 +53,7 @@ public class VisitController implements VisitEntry {
 				V.setVisitCheckinTime(rs.getString(7));
 				V.setVisitCheckoutTime(rs.getString(8));
 				V.setVisitStatus(rs.getString(9));
-
+				V.setVisitHost(rs.getString(10));
 				return (V);
 			}
 			return (null);
@@ -107,5 +107,20 @@ public class VisitController implements VisitEntry {
 			System.out.println("Exception in VisitController.updateStatusToOut(); "+ e);
 		}
 		return false;
+	}
+	
+	public static String getLastVisitId(){
+		try {
+			Connection cn= DBHelper.getConnection();
+			String query= "SELECT "+ COLUMN_VISIT_TRANSACTION_ID+ " FROM "+ VISIT_TABLE_NAME
+					+ " ORDER BY "+ COLUMN_VISIT_TRANSACTION_ID+ " DESC LIMIT 1";
+			System.out.println(query);
+			ResultSet rs= DBHelper.executeQuery(cn, query);
+			if(rs.next())
+				return rs.getString(1).trim();
+		} catch (Exception e) {
+			System.out.println("Exception in VisitController.getLastVisitId(); "+ e);
+		}
+		return null;
 	}
 }

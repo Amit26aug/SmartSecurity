@@ -74,6 +74,7 @@ public class SmartSecurityContract {
 		public static final String COLUMN_VISIT_CHECK_IN= "vcheckin";
 		public static final String COLUMN_VISIT_CHECK_OUT= "vcheckout";
 		public static final String COLUMN_VISIT_STATUS= "vstatus";
+		public static final String COLUMN_VISIT_HOST= "vhost";
 	}
 	
 	public interface AdminEntry{
@@ -90,6 +91,43 @@ public class SmartSecurityContract {
 		public static final String COLUMN_EXIT_RFID= "verfid";
 		public static final String COLUMN_EXIT_DATE= "vedate";
 		public static final String COLUMN_EXIT_TIME= "vetime";
+	}
+	
+	public interface HostEntry{
+		public static final String HOST_TABLE_NAME= "host";
+		public static final String COLUMN_HOST_HOST_ID= "eid";
+		public static final String COLUMN_HOST_HOST_PASSWORD= "password";
+	}
+	
+	public interface TrackEntry{
+		public static final String TRACK_TABLE_NAME= "track";
+		public static final String COLUMN_TRACK_TRACK_ID= "idtrack";
+		public static final String COLUMN_TRACK_VISITOR_ID= "vid";
+		public static final String COLUMN_TRACK_RFID= "vrfid";
+		public static final String COLUMN_TRACK_LOCATION= "location";
+		public static final String COLUMN_TRACK_TIME= "time";
+		public static final String COLUMN_TRACK_DATE= "date";
+		public static final String COLUMN_TRACK_VISIT_ID= "visitid";
+		public static final String COLUMN_TRCAK_LOCATION_STATUS= "lstatus";
+	}
+	
+	public interface RfidAllotedEntry{
+		public static final String RFID_ALLOTED_TABLE_NAME= "rfidalloted";
+		public static final String COLUMN_RFID_ALLOTED_RFID= "rfid";
+		public static final String COLUMN_RFID_ALLOTED_VISITOR_ID= "vid";
+		public static final String COLUMN_RFID_ALLOTED_VISIT_ID= "visitid";
+	}
+	
+	public interface LocationsEntry{
+		public static final int LOCATION_HOST= 3;
+		public static final int LOCATION_IT= 1;
+		public static final int LOCATION_SECURITY= 2;
+		public static final int LOCATION_DEP_3_ENTRY= 4;
+		public static final int LOCATION_HOST_EXIT= 500;
+		public static final int LOCATION_COMPANY_EXIT= 501;
+		public static final int LOCATION_DEP_1_EXIT= 502;
+		public static final int LOCATION_DEP_2_EXIT= 503;
+		public static final int LOCATION_DEP_3_EXIT= 504;
 	}
 	
 }
